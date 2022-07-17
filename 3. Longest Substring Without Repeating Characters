@@ -1,0 +1,25 @@
+# Time complexity: O(n)
+# Space complexity: O(len(set(s),128)
+
+# Using Sliding Window technique to solve problem.
+
+
+
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        n = len(s)
+        l = r = 0
+        max_len = 0
+        char = [0] * 128
+        while r < n:
+            char[ord(s[r])] += 1
+            while char[ord(s[r])] > 1:
+                char[ord(s[l])] -= 1
+                l += 1
+            max_len = max(max_len, r-l+1)
+            r += 1
+        return max_len
