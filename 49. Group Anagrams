@@ -1,0 +1,17 @@
+# Time complexity: O(n * klogk) -> n is length of strs and k is the length of longest str in strs
+# Space complexity: O(n * k)
+
+
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        hashmap = {}
+        for str in strs:
+            if tuple(sorted(list(str))) in hashmap:
+                hashmap[tuple(sorted(list(str)))].append(str)
+            else:
+                hashmap[tuple(sorted(list(str)))] = [str]
+        return list(hashmap.values())
