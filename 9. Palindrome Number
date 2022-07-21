@@ -1,7 +1,7 @@
 # Using two pointer technique to solve problem
 
 # Time complexity: O(n)
-# Space complexity: O(1)
+# Space complexity: O(n) -> allocate str(x)
 
 
 class Solution(object):
