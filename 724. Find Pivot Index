@@ -1,0 +1,33 @@
+# Using prefix sum to solve problem
+
+# Time complexity: O(n)
+# Space complexity: O(1) -> allocate l_sum and r_sum
+
+
+
+class Solution(object):
+    def pivotIndex(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        
+        # calculate prefix sum
+        i = 1
+        while i < len(nums):
+            nums[i] += nums[i-1]
+            i += 1
+            
+        # calculate pivot index
+        l_sum = 0
+        r_sum = 0
+        for i in range(len(nums)):
+
+            l_sum = nums[i-1] if i != 0 else 0
+            r_sum = nums[len(nums)-1]-nums[i] if i != len(nums)-1 else 0
+            
+            if l_sum == r_sum:
+                return i
+            
+        return -1
+        
