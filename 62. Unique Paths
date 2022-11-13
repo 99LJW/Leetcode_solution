@@ -1,0 +1,10 @@
+# Time complexity : O(m * n)
+# Space complexity : O(m * n)
+
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        
+        grid = [[1] * n for i in range(m)]
+        for i, j in product(range(1,m),range(1,n)):
+            grid[i][j] = grid[i-1][j] + grid[i][j-1]
+        return grid[-1][-1]
